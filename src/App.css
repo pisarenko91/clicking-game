@@ -1,5 +1,12 @@
+* {
+  box-sizing: border-box;
+}
+
 .App {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
 }
 
 .App-logo {
