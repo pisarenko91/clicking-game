@@ -1,24 +1,17 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import Box from "./components/box";
 
 function App() {
+
+    const matrix = Array(10).fill().map(() => Array(10).fill().map((i,j) => j));
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          I have edited <code> src / App.js </code> and save to reload.{" "}
-        </p>{" "}
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React{" "}
-        </a>{" "}
-      </header>{" "}
+      {matrix.map((row, index) => (
+        <div className="box-row" key={index}>
+          {row.map(column => <Box key={column} row={index} column={column}/>)}
+        </div>
+      ))}
     </div>
   );
 }
