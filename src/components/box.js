@@ -4,7 +4,8 @@ import { setActiveBlock } from "../actions";
 import { setNextBlock } from "../actions";
 
 const mapStateToProps = state => ({
-  activeBlock: state.blocks
+  activeBlock: state.blocks,
+  nextBlock: state.nextBlock
 });
 
 const isBoxActive = (row, column, activeRow, activeColumn) => {
@@ -97,11 +98,13 @@ const Box = (props, nextCube) => (
     }`}
     onClick={() => {
       props.dispatch(setActiveBlock(props.row, props.column));
-      props.dispatch(setNextBlock(nextCube.row, nextCube.column));
+      //props.dispatch(setActiveBlock(props.nextCube.row, props.nextCube.column));
     }}
   >
     <p> row {props.row}</p>
     <p> column {props.column}</p>
+    <p> nextRow {nextCube.row}</p>
+    <p> nextColumn {nextCube.column}</p>
   </div>
 );
 
