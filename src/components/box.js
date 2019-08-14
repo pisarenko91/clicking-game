@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setActiveBlock, setNextBlock } from "../actions";
+import { setActiveBlock } from "../actions";
+import { setNextBlock } from "../actions";
 
 const mapStateToProps = state => ({
   activeBlock: state.blocks
@@ -24,7 +25,7 @@ const isBoxActive = (row, column, activeRow, activeColumn) => {
 
 //const level = {};
 
-const generateLevel = props => {
+const generateLevel = (activeColumn, activeRow) => {
   const getRandomInt = (min, max) => {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -35,8 +36,8 @@ const generateLevel = props => {
   let nextCube = {};
 
   let currentCube = {
-    currentColumn: props.column,
-    currentRow: props.row
+    currentColumn: activeColumn,
+    currentRow: activeRow
   };
 
   switch (getRandomInt(1, 8)) {
@@ -80,7 +81,9 @@ const generateLevel = props => {
   return nextCube;
 };
 
-const Box = props => (
+generateLevel();
+
+const Box = (props, nextCube) => (
   <div
     className={`box ${
       isBoxActive(
@@ -94,6 +97,7 @@ const Box = props => (
     }`}
     onClick={() => {
       props.dispatch(setActiveBlock(props.row, props.column));
+      props.dispatch(setNextBlock(nextCube.row, nextCube.column));
     }}
   >
     <p> row {props.row}</p>
