@@ -1,8 +1,13 @@
 import { combineReducers } from "redux";
 import blocks from "./blocks";
-import nextBlock from "./nextBlock";
 
 export default combineReducers({
-  blocks,
-  nextBlock
+  blocks
 });
+
+/*
+import { combineReducers } from "redux";
+import * as reducers from "../reducers";
+
+export default combineReducers(reducers);
+*/
